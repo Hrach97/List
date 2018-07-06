@@ -43,8 +43,8 @@ void List<T>::insertion(const T& value) {
 template <typename T>
 void List<T>::insert_at(int pos, const T& value) {
 	Node* newNode = new Node();
-	Node* current = new Node();
-	Node * prev = new Node();
+	Node* current;
+	Node * prev;
 
 	current = this->m_head;
 	if(this->m_head != nullptr) {
@@ -61,7 +61,6 @@ void List<T>::insert_at(int pos, const T& value) {
 			current->next = newNode;
 		} else if(pos > ix + 1) {
 			std::cout << "Insert_at argument pos is out of bounds" << std::endl;
-			return;
 		} else {
 			prev->next = newNode;
 			newNode->next = current;
@@ -71,11 +70,11 @@ void List<T>::insert_at(int pos, const T& value) {
 		newNode->next = nullptr;
 	}
 	newNode->value = value;
+	
 }
 
 template <typename T>
 void List<T>::deletion(int pos) {	
-
 	Node* current;
 	Node * prev;
 
@@ -123,7 +122,7 @@ int List<T>::search(const T& value) {
 			return ++ix;
 		current = current->next;
 	}
-	return 0;
+	return -1;
 }
 	
 #endif
